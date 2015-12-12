@@ -1,0 +1,7 @@
+setup.py
+getdrip/__init__.py
+getdrip.egg-info/PKG-INFO
+getdrip.egg-info/SOURCES.txt
+getdrip.egg-info/dependency_links.txt
+getdrip.egg-info/not-zip-safe
+getdrip.egg-info/top_level.txt
