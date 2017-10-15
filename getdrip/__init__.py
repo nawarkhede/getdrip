@@ -116,3 +116,9 @@ class GetDripAPI(object):
         url = '%s/%s/goals/%s' % (self.api_url, self.account_id, goal_id)
         response = requests.get(url, headers=self.headers, auth=self.auth_tuple)
         return response.status_code, response.json()
+
+    def record_event(self, payload):
+        url = '%s/%s/events' % (self.api_url, self.account_id)
+        response = requests.post(url, headers=self.headers, data=json.dumps(payload), auth=self.auth_tuple)
+        return response.status_code, response.json()
+
