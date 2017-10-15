@@ -120,5 +120,11 @@ class GetDripAPI(object):
     def record_event(self, payload):
         url = '%s/%s/events' % (self.api_url, self.account_id)
         response = requests.post(url, headers=self.headers, data=json.dumps(payload), auth=self.auth_tuple)
+        return response.status_code
+
+    def record_purchase(self, email, payload):
+        url = '%s/%s/subscribers/%s/purchases' % (self.api_url, self.account_id,
+                                                  email)
+        response = requests.post(url, headers=self.headers, data=json.dumps(payload), auth=self.auth_tuple)
         return response.status_code, response.json()
 
