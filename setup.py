@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='getdrip',
-        version='0.2',
+        version='0.3',
         description='Python wrapper for https://www.getdrip.com/',
         url='https://github.com/nawarkhede/getdrip',
         author='Nishant Nawarkhede',

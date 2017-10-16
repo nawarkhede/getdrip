@@ -35,6 +35,8 @@ untag_a_subscriber | untags a subscriber
 fetch_a_form | returns a form
 fetch_list_of_goals |  returns list of goals
 fetch_goal | returns specific goal
+record_event | sends a custom event
+record_purchase | records a purchase
 
 
 # Examples
