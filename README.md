@@ -12,8 +12,10 @@ pip install getdrip
 
 ```
 >>> from getdrip import GetDripAPI
->>> drip = GetDripAPI(token="<token>", account_id="<account_id>")
+>>> drip = GetDripAPI(token="<token>", account_id="<account_id>", application_name="<application_name>")
 ```
+
+The application name is optional, and is sent as the User-Agent in the request to Drip if provided.
 
 
 Method  | Description
