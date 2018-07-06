@@ -31,7 +31,7 @@ list_of_all_subscribers  | return list of all subscriber
 delete_subscriber  | deletes existing subscriber
 activate_campaign  | activates campaign
 pause_campaign | pauses campaign
-remove_subscriber_from_campaigns | remove a subscriber from one or all campaigns 
+remove_subscriber_from_campaign | remove a subscriber from one or all campaigns 
 fetch_everyone_sucbscribed_to_campaign | returns everyone who is subscribed to campaign
 tag_a_subscriber | tags a subscriber
 untag_a_subscriber | untags a subscriber
@@ -137,9 +137,9 @@ drip.activate_campaign(ampaign_id)
 drip.pause_campaign(campaign_id)
 ```
 
-**Remove subscriber from campaigns**
+**Remove subscriber from campaign**
 ```
-drip.remove_subscriber_from_campaigns(id_or_email, campaign_id=campaign_id)
+drip.remove_subscriber_from_campaign(id_or_email, campaign_id=campaign_id)
 ```
 
 **Returns everyone who is subscribed to campaign**
