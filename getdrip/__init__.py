@@ -92,6 +92,20 @@ class GetDripAPI(object):
         url = '%s/%s/campaigns/%s/pause' % (self.api_url, self.account_id, campaign_id)
         response = requests.post(url, headers=self.headers, auth=self.auth)
         return response.status_code
+    
+    def remove_subscriber_from_campaign(self, id_or_email, campaign_id=None):
+        url = '%s/%s/subscribers/%s/remove' % (self.api_url, self.account_id, id_or_email)
+        payload = None
+        
+        if campaign_id is not None:
+            payload = {
+                'campaign_id': campaign_id
+            }
+            
+            payload = json.dumps(payload)
+        
+        response = requests.post(url, headers=self.headers, auth=self.auth, data=payload)
+        return response.status_code
 
     def fetch_everyone_sucbscribed_to_campaign(self, campaign_id):
         url = '%s/%s/campaigns/%s/subscribers' % (self.api_url, self.account_id, campaign_id)
