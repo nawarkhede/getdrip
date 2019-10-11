@@ -29,6 +29,7 @@ fetch_subscriber  | returns specific subscriber
 subscribe_subscriber  | subscribe a subscriber
 list_of_all_subscribers  | return list of all subscriber
 delete_subscriber  | deletes existing subscriber
+unsubscribe_from_all | remove a subscriber from all mailings
 activate_campaign  | activates campaign
 pause_campaign | pauses campaign
 remove_subscriber_from_campaign | remove a subscriber from one or all campaigns 
@@ -120,6 +121,11 @@ payload = {
 **Return list of all subscriber**
 ```
 drip.list_of_all_subscribers()
+```
+
+**Unsubscribe from all mailings**
+```
+drip.unsubscribe_from_all(subscriber_id)
 ```
 
 **Deletes existing subscriber**
