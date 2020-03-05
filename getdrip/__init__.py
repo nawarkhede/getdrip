@@ -83,6 +83,11 @@ class GetDripAPI(object):
         response = requests.delete(url, headers=self.headers, auth=self.auth)
         return response.status_code
 
+    def unsubscribe_from_all(self, subscriber_id):
+        url = '%s/%s/subscribers/%s/unsubscribe_all' % (self.api_url, self.account_id, subscriber_id)
+        response = requests.post(url, headers=self.headers, auth=self.auth)
+        return response.status_code, response.json()
+
     def activate_campaign(self, campaign_id):
         url = '%s/%s/campaigns/%s/activate' % (self.api_url, self.account_id, campaign_id)
         response = requests.post(url, headers=self.headers, auth=self.auth)
