@@ -36,6 +36,7 @@ class GetDripAPI(object):
         self.token = kwrds['token']
         self.account_id = kwrds['account_id']
         self.api_url = 'https://api.getdrip.com/v2'
+        self.api_url_v3 = 'https://api.getdrip.com/v3/'
         self.auth = requests.auth.HTTPBasicAuth(self.token, '')
 
     def fetch_all_campaign(self):
@@ -49,7 +50,7 @@ class GetDripAPI(object):
         return response.status_code, response.json()
 
     def fetch_accounts(self):
-        url =  '%s/accounts'%(self.api_url)
+        url = '%s/accounts' % (self.api_url)
         response = requests.get(url, headers=self.headers, auth=self.auth)
         return response.status_code, response.json()
 
@@ -97,18 +98,18 @@ class GetDripAPI(object):
         url = '%s/%s/campaigns/%s/pause' % (self.api_url, self.account_id, campaign_id)
         response = requests.post(url, headers=self.headers, auth=self.auth)
         return response.status_code
-    
+
     def remove_subscriber_from_campaign(self, id_or_email, campaign_id=None):
         url = '%s/%s/subscribers/%s/remove' % (self.api_url, self.account_id, id_or_email)
         payload = None
-        
+
         if campaign_id is not None:
             payload = {
                 'campaign_id': campaign_id
             }
-            
+
             payload = json.dumps(payload)
-        
+
         response = requests.post(url, headers=self.headers, auth=self.auth, data=payload)
         return response.status_code
 
@@ -148,8 +149,21 @@ class GetDripAPI(object):
         return response.status_code
 
     def record_purchase(self, email, payload):
-        url = '%s/%s/subscribers/%s/purchases' % (self.api_url, self.account_id,
-                                                  email)
+        url = '%s/%s/subscribers/%s/purchases' % (self.api_url, self.account_id, email)
         response = requests.post(url, headers=self.headers, data=json.dumps(payload), auth=self.auth)
         return response.status_code, response.json()
 
+    def create_or_update_cart(self, payload):
+        url = '%s/%s/shopper_activity/cart' % (self.api_url_v3, self.account_id)
+        response = requests.post(url, headers=self.headers, data=json.dumps(payload), auth=self.auth)
+        return response.status_code
+
+    def create_or_update_order(self, payload):
+        url = '%s/%s/shopper_activity/order' % (self.api_url_v3, self.account_id)
+        response = requests.post(url, headers=self.headers, data=json.dumps(payload), auth=self.auth)
+        return response.status_code
+
+    def create_or_update_order(self, payload):
+        url = '%s/%s/shopper_activity/product' % (self.api_url_v3, self.account_id)
+        response = requests.post(url, headers=self.headers, data=json.dumps(payload), auth=self.auth)
+        return response.status_code
