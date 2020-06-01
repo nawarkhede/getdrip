@@ -27,7 +27,7 @@ class GetDripAPI(object):
             raise AccountIDNotFound('Please provide account id')
 
         self.headers = {
-            'Content-Type': 'application/vnd.api+json',
+            'Content-Type': 'application/json',
         }
 
         if 'application_name' in kwrds.keys():
@@ -36,7 +36,7 @@ class GetDripAPI(object):
         self.token = kwrds['token']
         self.account_id = kwrds['account_id']
         self.api_url = 'https://api.getdrip.com/v2'
-        self.api_url_v3 = 'https://api.getdrip.com/v3/'
+        self.api_url_v3 = 'https://api.getdrip.com/v3'
         self.auth = requests.auth.HTTPBasicAuth(self.token, '')
 
     def fetch_all_campaign(self):
@@ -163,7 +163,7 @@ class GetDripAPI(object):
         response = requests.post(url, headers=self.headers, data=json.dumps(payload), auth=self.auth)
         return response.status_code
 
-    def create_or_update_order(self, payload):
+    def create_or_update_product(self, payload):
         url = '%s/%s/shopper_activity/product' % (self.api_url_v3, self.account_id)
         response = requests.post(url, headers=self.headers, data=json.dumps(payload), auth=self.auth)
         return response.status_code
