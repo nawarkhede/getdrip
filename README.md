@@ -22,7 +22,7 @@ Method  | Description
 ------------- | -------------
 fetch_all_campaign  | returns all campaigns
 fetch_campaign  | returns specific campaign
-fetch_campaign | return all accounts accociated
+fetch_accounts | return all accounts associated
 create_or_update_subscriber  | create new or update existing subscriber
 create_or_update_subscriber_batch  | create new or update existing batch of subscriber
 fetch_subscriber  | returns specific subscriber
@@ -55,7 +55,7 @@ drip.fetch_all_campaign()
 drip.fetch_campaign(campaign_id)
 ```
 
-**Return all accounts accociated**
+**Return all accounts associated**
 ```
 drip.fetch_accounts()
 ```
